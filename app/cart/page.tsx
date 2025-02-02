@@ -16,8 +16,8 @@ const Page = () => {
     }, [dispatch]);
     return (
         <>
-            <div className="mx-auto max-w-7xl">
-                <CartTable cartItems={cart} loading={loading}/>
+            <div className="">
+                <CartTable cartItems={cart}/>
             </div>
 
         </>

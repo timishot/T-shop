@@ -112,7 +112,7 @@ const CartTable = ({ cartItems }: { cartItems: Product[] }) => {
                     </section>
 
                     {/* Cart Totals */}
-                    <section id="cart-add" className="mt-12">
+                    <section id="cart-add" className="mt-12 mx-auto max-w-7xl">
                         <div id="subtotal" className="w-full mb-8 border border-gray-300 p-8">
                             <h3 className="pb-4">Cart Totals</h3>
                             <table className="w-full border-collapse">
