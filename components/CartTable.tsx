@@ -8,7 +8,8 @@ import Image from "next/image";
 
 const CartTable = ({ cartItems }: { cartItems: Product[] }) => {
     const dispatch = useAppDispatch();
-    const loading = useAppSelector((state) => state.loading); // 🔥 Get loading state
+    const loading = useAppSelector((state) => state.loading); // Get loading state
+    const error = useAppSelector((state) => state.error);
 
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 5;

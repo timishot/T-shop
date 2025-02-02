@@ -2,17 +2,15 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import {Product} from "@/type";
 import {fetchCart} from "@/redux/features/cartThunks";
 
-export interface ICartProduct extends Product {
-    quantity: number; // Add quantity to track item count in cart
-}
 
-const initialState: ICartProduct[] = [];
+
+const initialState: Product[] = [];
 
 export const cartSlice = createSlice({
     name: "cart",
     initialState,
     reducers: {
-        setCart:  (state, action: PayloadAction<ICartProduct[]>) => {
+        setCart:  (state, action: PayloadAction<Product[]>) => {
             return action.payload; // Set cart state to the persisted cart
         },
         addToCart: (state, action: PayloadAction<Product>) => {

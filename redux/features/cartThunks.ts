@@ -5,6 +5,7 @@ import { ICartProduct } from "./cartSlice";
 export const fetchCart = createAsyncThunk<ICartProduct[], void, { rejectValue: string }>(
     "cart/fetchCart",
     async (_, { rejectWithValue }) => {
+
         try {
             const res = await fetch("/api/cart");
 
