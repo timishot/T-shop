@@ -1,25 +1,18 @@
-// features/cartThunks.ts
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import {ICartProduct, setCart} from "./cartSlice";
-import {useAppDispatch} from "@/redux/hooks"; // Adjust the path accordingly
+import { ICartProduct } from "./cartSlice";
 
 // Fetch the persisted cart data
-
-// Fetch the persisted cart data
-export const fetchCart = createAsyncThunk<ICartProduct[]>(
+export const fetchCart = createAsyncThunk<ICartProduct[], void, { rejectValue: string }>(
     "cart/fetchCart",
     async (_, { rejectWithValue }) => {
         try {
             const res = await fetch("/api/cart");
-            console.log(res, "res");
 
             if (!res.ok) {
-                throw new Error("Failed to fetch cart data");
+                return rejectWithValue("Failed to fetch cart data");
             }
 
-            const data: ICartProduct[] = await res.json();
-            console.log(data, "data");
-            return data; // Redux will handle setting the state via extraReducers
+            return await res.json();
         } catch (error: any) {
             return rejectWithValue(error.message);
         }
@@ -27,19 +20,24 @@ export const fetchCart = createAsyncThunk<ICartProduct[]>(
 );
 
 // Persist the current cart data
-export const persistCart = createAsyncThunk(
+export const persistCart = createAsyncThunk<
+    ICartProduct[],
+    ICartProduct[],
+    { rejectValue: string }
+>(
     "cart/persistCart",
-    async (cart: ICartProduct[], { rejectWithValue }) => {
+    async (cart, { rejectWithValue }) => {
         try {
             const res = await fetch("/api/cart", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(cart),
             });
-            console.log(res, "res")
+
             if (!res.ok) {
-                throw new Error("Failed to persist cart data");
+                return rejectWithValue("Failed to persist cart data");
             }
+
             return await res.json();
         } catch (error: any) {
             return rejectWithValue(error.message);

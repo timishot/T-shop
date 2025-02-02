@@ -16,7 +16,7 @@ interface ProductCardProps {
 const ProductCard = ({ product }: ProductCardProps) => {
     const dispatch = useAppDispatch();
     // Access the cart state function from Redux
-    const cart = useAppSelector((state) => state.cartReducer);
+    const cart = useAppSelector((state) => state.cart);
     const [loadingPersist, setLoadingPersist] = useState(false);
     useEffect(() => {
         dispatch(fetchCart()); // Sync Redux state with persisted JSON cart

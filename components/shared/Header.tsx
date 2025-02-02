@@ -11,7 +11,7 @@ const Header = () => {
     useEffect(() => {
         dispatch(fetchCart()); // Sync Redux state with persisted JSON cart
     }, [dispatch]);
-    const cart = useAppSelector((state) => state.cartReducer);
+    const cart = useAppSelector((state) => state.cart);
 
     return (
         <header className="my-10 flex justify-between gap-5 align-center mx-auto max-w-7xl">

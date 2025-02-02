@@ -28,5 +28,15 @@
     "image": "https://picsum.photos/200?random=4",
     "stock": 30,
     "quantity": 1
+  },
+  {
+    "id": "1",
+    "name": "Wireless Headphones",
+    "price": 99.99,
+    "description": "High-quality wireless headphones with noise cancellation.",
+    "category": "Electronics",
+    "image": "https://picsum.photos/200?random=1",
+    "stock": 15,
+    "quantity": 1
   }
 ]
