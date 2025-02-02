@@ -122,21 +122,18 @@ const page = () => {
                 {/* Bar Chart */}
                 <div className="bg-white p-6 shadow rounded-lg">
                     <h3 className="text-lg font-semibold mb-4">📈 Monthly Sales Trend</h3>
-                    @ts-ignore
                     <Bar data={salesData}  />
                 </div>
 
                 {/* Line Chart */}
                 <div className="bg-white p-6 shadow rounded-lg">
                     <h3 className="text-lg font-semibold mb-4">📊 Products Added Over Time</h3>
-                    @ts-ignore
                     <Line data={productData} />
                 </div>
 
                 {/* Pie Chart */}
                 <div className="bg-white p-6 shadow rounded-lg">
                     <h3 className="text-lg font-semibold mb-4">🛒 Category Sales Distribution</h3>
-                    @ts-ignore
                     <Pie data={pieData}  />
                 </div>
             </div>
