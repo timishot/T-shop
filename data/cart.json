@@ -1,15 +1,5 @@
 [
   {
-    "id": "3",
-    "name": "Gaming Mouse",
-    "price": 49.99,
-    "description": "Ergonomic gaming mouse with customizable buttons.",
-    "category": "Electronics",
-    "image": "https://picsum.photos/200?random=3",
-    "stock": 25,
-    "quantity": 1
-  },
-  {
     "id": "1",
     "name": "Wireless Headphones",
     "price": 99.99,
@@ -20,23 +10,13 @@
     "quantity": 1
   },
   {
-    "id": "4",
-    "name": "Mechanical Keyboard",
-    "price": 79.99,
-    "description": "RGB backlit mechanical keyboard for gaming and productivity.",
+    "id": "3",
+    "name": "Gaming Mouse",
+    "price": 49.99,
+    "description": "Ergonomic gaming mouse with customizable buttons.",
     "category": "Electronics",
-    "image": "https://picsum.photos/200?random=4",
-    "stock": 30,
-    "quantity": 1
-  },
-  {
-    "id": "2",
-    "name": "Smartphone Case",
-    "price": 19.99,
-    "description": "Durable and stylish smartphone case with shock protection.",
-    "category": "Accessories",
-    "image": "https://picsum.photos/200?random=2",
-    "stock": 50,
+    "image": "https://picsum.photos/200?random=3",
+    "stock": 25,
     "quantity": 1
   }
 ]

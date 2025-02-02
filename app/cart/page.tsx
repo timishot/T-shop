@@ -16,7 +16,7 @@ const Page = () => {
     }, [dispatch]);
     return (
         <>
-            <div className="">
+            <div className="mt-28">
                 <CartTable cartItems={cart}/>
             </div>
 

@@ -49,16 +49,16 @@ const CartTable = ({ cartItems }: { cartItems: Product[] }) => {
                 </div>
             ) : cartItems.length > 0 ? (
                 <>
-                    <section id="cart" className="p-16">
+                    <section id="cart" className="overflow-x-auto w-full">
                         <table className="w-full border-collapse table-fixed">
-                            <thead>
+                            <thead className="border-t border-b border-gray-200">
                             <tr>
-                                <td className="text-center font-semibold text-xs py-4 uppercase">Remove</td>
-                                <td className="text-center font-semibold text-xs py-4 uppercase">Image</td>
-                                <td className="text-center font-semibold text-xs py-4 uppercase">Product</td>
-                                <td className="text-center font-semibold text-xs py-4 uppercase">Price</td>
-                                <td className="text-center font-semibold text-xs py-4 uppercase">Quantity</td>
-                                <td className="text-center font-semibold text-xs py-4 uppercase">Subtotal</td>
+                                <td className="font-semibold text-xs py-4 text-center uppercase w-[100px]">Remove</td>
+                                <td className="font-semibold text-xs py-4 text-center uppercase w-[150px]">Image</td>
+                                <td className="font-semibold text-xs py-4 text-center uppercase w-[250px]">Product</td>
+                                <td className="font-semibold text-xs py-4 text-center uppercase w-[150px]">Price</td>
+                                <td className="font-semibold text-xs py-4 text-center uppercase w-[150px]">Quantity</td>
+                                <td className="font-semibold text-xs py-4 text-center uppercase w-[150px]">Subtotal</td>
                             </tr>
                             </thead>
                             <tbody>
@@ -66,11 +66,12 @@ const CartTable = ({ cartItems }: { cartItems: Product[] }) => {
                                 <tr key={item.id}>
                                     <td className="text-center py-3">
                                         <button onClick={() => handleRemoveFromCart(item.id)} disabled={loading}>
-                                            <Image src="/icons/remove.svg" alt="remove" width={40} height={40} />
+                                            <Image src="/icons/remove.svg" alt="remove" width={40} height={40}/>
                                         </button>
                                     </td>
                                     <td className="flex items-center justify-center py-3">
-                                        <Image src={item.image} alt="image" width={50} height={50} className="w-16 object-fill" />
+                                        <Image src={item.image} alt="image" width={50} height={50}
+                                               className="w-[70px] object-fill"/>
                                     </td>
                                     <td className="text-left py-3">{item.description}</td>
                                     <td className="text-center py-3">${item.price}</td>
@@ -79,7 +80,7 @@ const CartTable = ({ cartItems }: { cartItems: Product[] }) => {
                                             type="number"
                                             value={item.quantity}
                                             onChange={(e) => handleQuantityChange(item, e.target.value)}
-                                            className="w-4/6 p-2"
+                                            className="w-[70%] p-2 pl-4"
                                             disabled={loading}
                                         />
                                     </td>
@@ -89,6 +90,7 @@ const CartTable = ({ cartItems }: { cartItems: Product[] }) => {
                             </tbody>
                         </table>
                     </section>
+
 
                     {/* Pagination Controls */}
                     <section id="pagination" className="mt-12">
