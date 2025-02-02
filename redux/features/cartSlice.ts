@@ -2,8 +2,6 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import {Product} from "@/type";
 import {fetchCart} from "@/redux/features/cartThunks";
 
-
-
 const initialState: Product[] = [];
 
 export const cartSlice = createSlice({

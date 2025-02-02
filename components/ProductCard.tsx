@@ -9,9 +9,11 @@ import {fetchCart, persistCart} from "@/redux/features/cartThunks";
 import {useState, useEffect} from "react";
 import {toast} from "@/hooks/use-toast";
 
-interface ProductCardProps {
+type ProductCardProps = {
     product: Product;
-}
+};
+
+
 
 const ProductCard = ({ product }: ProductCardProps) => {
     const dispatch = useAppDispatch();

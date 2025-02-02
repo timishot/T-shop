@@ -88,24 +88,8 @@ const page = () => {
         ],
     };
 
-    // Chart.js Options (for tooltips & animations)
-    const chartOptions = {
-        responsive: true,
-        plugins: {
-            legend: {
-                position: "top",
-            },
-            tooltip: {
-                enabled: true,
-                mode: "index",
-                intersect: false,
-            },
-        },
-        animation: {
-            duration: 2000,
-            easing: "easeInOutQuart",
-        },
-    };
+
+
 
     return (
         <div className="p-8 mx-auto max-w-7xl mb-20 ">
@@ -138,19 +122,22 @@ const page = () => {
                 {/* Bar Chart */}
                 <div className="bg-white p-6 shadow rounded-lg">
                     <h3 className="text-lg font-semibold mb-4">📈 Monthly Sales Trend</h3>
-                    <Bar data={salesData} options={chartOptions} />
+                    @ts-ignore
+                    <Bar data={salesData}  />
                 </div>
 
                 {/* Line Chart */}
                 <div className="bg-white p-6 shadow rounded-lg">
                     <h3 className="text-lg font-semibold mb-4">📊 Products Added Over Time</h3>
-                    <Line data={productData} options={chartOptions} />
+                    @ts-ignore
+                    <Line data={productData} />
                 </div>
 
                 {/* Pie Chart */}
                 <div className="bg-white p-6 shadow rounded-lg">
                     <h3 className="text-lg font-semibold mb-4">🛒 Category Sales Distribution</h3>
-                    <Pie data={pieData} options={chartOptions} />
+                    @ts-ignore
+                    <Pie data={pieData}  />
                 </div>
             </div>
         </div>

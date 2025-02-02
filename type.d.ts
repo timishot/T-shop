@@ -6,5 +6,5 @@ export interface Product {
     category: "Electronics" | "Accessories" | "Wearables" | "Smart Home" | "Furniture" | "Personal Care" | "Storage";
     image: string;
     stock: number;
-    quantity: number;
+    quantity?: number;
 }
