@@ -34,7 +34,7 @@ const RootLayout = async ({ children }: { children: ReactNode }) => {
       <ClientProviders>
           <Header />
           {children}
-          <Toaster />
+          <Toaster className="bg-gray-900 text-white"/>
           <Footer />
       </ClientProviders>
       </body>

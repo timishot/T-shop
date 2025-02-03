@@ -35,6 +35,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
             title: `${product.name} Added to Cart`,
             description: `You have successfully added ${product.name} to your cart.`,
             variant: "default", // You can customize the variant as per the ShadCN toast documentation
+            className: "bg-white"
         });
     };
 
@@ -48,6 +49,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
             title: `${product.name} Removed from Cart`,
             description: `You have removed ${product.name} from your cart.`,
             variant: "destructive", // You can customize the variant
+            className: "bg-white"
         });
     };
 
