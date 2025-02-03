@@ -1,24 +1,22 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import {Product} from "@/type";
-import {fetchCart} from "@/redux/features/cartThunks";
+import { Product } from "@/type";
+import { fetchCart } from "@/redux/features/cartThunks";
 
-const initialState: Product[] = [];
+const initialState: Product[] = []; // Ensure SSR renders empty first
 
 export const cartSlice = createSlice({
     name: "cart",
     initialState,
     reducers: {
-        setCart:  (state, action: PayloadAction<Product[]>) => {
-            return action.payload; // Set cart state to the persisted cart
+        setCart: (state, action: PayloadAction<Product[]>) => {
+            return action.payload;
         },
         addToCart: (state, action: PayloadAction<Product>) => {
-            const existingProduct = state.find((product) => product.id === action.payload.id);
-
+            const existingProduct = state.find((p) => p.id === action.payload.id);
             if (existingProduct) {
                 existingProduct.quantity += 1;
             } else {
-
-                state.push({ ...action.payload, quantity: 1 }); // Add quantity when pushing
+                state.push({ ...action.payload, quantity: 1 });
             }
         },
         removeFromCart: (state, action: PayloadAction<string>) => {
@@ -32,9 +30,7 @@ export const cartSlice = createSlice({
         },
     },
     extraReducers: (builder) => {
-        // When the cart is fetched from the server, replace the state.
         builder.addCase(fetchCart.fulfilled, (_, action) => action.payload);
-        // Optionally, you can handle persistCart cases (e.g., logging, errors)
     },
 });
 

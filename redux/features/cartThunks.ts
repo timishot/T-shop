@@ -1,42 +1,39 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import {Product} from "@/type";
+import { Product } from "@/type";
 
-// Fetch the persisted cart data
-type CartData = Product[];
+// Safe localStorage access
+const loadCartFromLocalStorage = (): Product[] => {
+    if (typeof window === "undefined") return []; // Prevent SSR issues
+    const cart = localStorage.getItem("cart");
+    return cart ? JSON.parse(cart) : [];
+};
 
-export const fetchCart = createAsyncThunk<CartData, void, { rejectValue: string }>(
+const saveCartToLocalStorage = (cart: Product[]) => {
+    if (typeof window !== "undefined") {
+        localStorage.setItem("cart", JSON.stringify(cart));
+    }
+};
+
+// Fetch the cart AFTER mount (client-side only)
+export const fetchCart = createAsyncThunk<Product[], void, { rejectValue: string }>(
     "cart/fetchCart",
     async (_, { rejectWithValue }) => {
         try {
-            const res = await fetch("/api/cart");
-            if (!res.ok) {
-                return rejectWithValue("Failed to fetch cart data");
-            }
-            return await res.json();
+            return loadCartFromLocalStorage();
         } catch (error) {
-            return rejectWithValue("Network error: Could not connect to server");
+            return rejectWithValue("Failed to fetch cart data from localStorage");
         }
     }
 );
 
-// Persist the current cart data
-export const persistCart = createAsyncThunk<CartData, CartData, { rejectValue: string }>(
+export const persistCart = createAsyncThunk<Product[], Product[], { rejectValue: string }>(
     "cart/persistCart",
     async (cart, { rejectWithValue }) => {
         try {
-            const res = await fetch("/api/cart", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(cart),
-            });
-
-            if (!res.ok) {
-                return rejectWithValue("Failed to persist cart data");
-            }
-
-            return await res.json();
+            saveCartToLocalStorage(cart);
+            return cart;
         } catch (error) {
-            return rejectWithValue("Network error: Could not save cart data");
+            return rejectWithValue("Failed to save cart data to localStorage");
         }
     }
 );
